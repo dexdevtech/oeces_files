@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/static/images/logo.png" type="image/x-icon">
+    <title>CENRO</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="{{url_for('home')}}">
+                    <img src="static/images/logo.png" alt="">
+                </a>
+            </div>
+            <ul>
+                <li><a href="{{url_for('projects')}}">PROJECTS</a></li>    
+                <li><a href="#join">JOIN</a></li>
+                <li><a href="{{url_for('login')}}">LOGIN</a></li>
+            </ul>
+            <box-icon name='menu' color="#26d192" size="lg" id="menu"></box-icon>
+        </nav>
+        <div class="header-content">
+            <div class="header-left-true header-left">
+                <h1>CENRO</h1>
+                <p>Welcome to the City Environment and Natural Resources Office (CENRO) official website. CENRO is dedicated 
+                    to promoting sustainable urban development and preserving natural resources through comprehensive 
+                    planning, conservation initiatives, and community engagement.
+                <p>Help us take care of the environment.</p>
+                <a href="#join"><button>JOIN</button></a>
+            </div>
+            <div class="header-left header-left-false">
+                <div class="row row1">
+                    <div class="card card1"></div>
+                    <div class="card card2"></div>
+                </div>
+                <div class="row row2">
+                    <div class="card card3"></div>
+                    <div class="card card4"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section class="about">
+        <h1>OUR MISSION</h1>
+        <div class="row">
+            <div class="about-left">
+                <img src="/static/images/we_are_cenro.jpg" alt="Photo of Cenro members">
+            </div>
+            <div class="about-right">
+                <h2> THE CENRO</h2>
+                <p class="about-right-p">&emsp;&emsp;The City Environment and Natural Resources Office (CENRO) plays a crucial role in promoting sustainable development and the preservation of natural resources within urban areas. Through its strategic initiatives and policies, CENRO strives to create a harmonious balance between urbanization and environmental conservation. By addressing issues such as waste management, air quality, and green spaces, CENRO contributes to the overall well-being and resilience of cities, ensuring a healthier and greener future for its residents.</p>
+                <p class="about-right-p">&emsp;&emsp;Through collaborative efforts, CENRO ensures a greener and healthier future for cities and their residents.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <div class="slider-container" id="projects">
+        <div class="col">
+            <div class="project-info">
+                <h1>PREVIOUS PROJECTS</h1>
+            </div>
+            <div class="slider">
+                <img src="/static/images/1.png" alt="forest land-use plan">
+                <img src="/static/images/2.png" alt="formulation forest land-use plan">
+                <img src="/static/images/3.png" alt="rules and regulations">
+                <img src="/static/images/4.png" alt="best ecogardens">
+            </div>
+        </div>
+    </div>
+
+    <!-- PROCESS -->
+    <section class="process">
+        <div class="row">
+            <h1>JOIN THE MOVEMENT</h1>
+        </div>
+        <div class="row">
+            <div class="process-content">
+                <div class="progress-bar">
+                    <div class="c1"></div>
+                    <div class="c2"></div>
+                    <div class="c3"></div>
+                </div>
+                <div class="row">
+                    <div class="box1">
+                        <h2 class="h2-true">ONE</h2>
+                        <p class="p-true">Fill up form</p>
+                    </div>
+                    <div class="box2">
+                        <h2 class="h2-true">TWO</h2>
+                        <p class="p-true">Wait for Verification</p>
+                    </div>
+                    <div class="box3">
+                        <h2 class="h2-true">THREE</h2>
+                        <p class="p-true">Get Notified Anywhere!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTER -->
+    <section class="register" id="join">
+        <div class="row">
+            <div class="register-info">
+                <div class="register-h1">
+                    <h1>REGISTER</h1>
+                </div>
+            </div>
+            <div class="register-form">
+                <form method="post" autocomplete="off" name="google-sheet" id="regform">
+                    <label for="name">FULL NAME</label>
+                    <input type="text" name="name" id="name" required>
+                    <label for="age">AGE</label>
+                    <input type="number" name="age" id="age" min="13" max="150" required>
+                    <label for="gender">GENDER</label>
+                    <select name="gender" id="gender" required>
+                        <option value="prefer-not-say">SELECT</option>
+                        <option value="male">MALE</option>
+                        <option value="female">FEMALE</option>
+                        <option value="non-binary">NON-BINARY</option>
+                    </select>
+                    <label for="contact">CONTACT NUMBER</label>
+                    <input type="tel" name="contact" id="contact" required >
+                    <label for="email">EMAIL</label>
+                    <input type="email" name="email" id="email" required>
+                    <br>
+                    <div class="address">
+                        <div class="address1">
+                            <label for="house">HOUSE NUMBER</label>
+                            <input type="text" name="house" id="house" required>
+                            <label for="purok">PUROK</label>
+                            <input type="text" name="purok" id="purok" required>
+                        </div>
+                        <div class="address2">
+                            <label for="barangay">BARANGAY</label>
+                            <input type="text" name="barangay" id="barangay" required>
+                            <label for="city">CITY</label>
+                            <input type="text" name="city" id="city" required>
+                        </div>
+                    </div>
+                    <div class="tnc" >
+                        <input type="checkbox" name="tnc" id="tnc" checked required>
+                        <a href="{{url_for('tnc')}}" target="_blank">I AGREE WITH THE TERMS AND CONDITIONS</a>
+                    </div>
+                    <input type="submit" value="JOIN CLUSTER" name="submit" onclick="clearForm()">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="footer">
+        <h3>2023  |  CENIN.dx</h3>
+    </section>
+
+
+    <!------------------CHATBOT CODE ----------------->
+    <div class="container">
+        <div class="chatbox">
+            <div class="chatbox__support">
+                <div class="chatbox__header">
+                    <div class="chatbox__image--header">
+                        <img src="/static/images/small_chatbox-icon.png" alt="image">
+                    </div>
+                    <div class="chatbox__content--header">
+                        <h4 class="chatbox__heading--header">CENRO garBot</h4>
+                        <p class="chatbox__description--header">Hello there! I am garBot, how may I help you?</p>
+                    </div>
+                </div>
+                <div class="chatbox__messages">
+                       
+                    <div></div>
+                </div>
+                <div class="chatbox__footer">
+                    <input type="text" placeholder="Write a message...">
+                    <button class="chatbox__send--footer send__button">Send</button>
+                </div>
+            </div>
+            <div class="chatbox__button">
+                <button><img src="{{ url_for('static', filename='images/chatbox-icon.png') }}" /></button>
+                <div class="red-dot-one">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $SCRIPT_ROOT = "{{ request.script_root }}";
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+
+    <!---------------------- END OF CHATBOT CODE ---------------------->
+
+
+
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="/static/index.js"></script>
+
+    <!-- SCRIPT FOR GOOGLE REGISTER -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwcf16w-Z3G_UGlea0XDuhyWstftZUuIY913LPW_SpcFCJA6anHbUbP6Dzm4Sq4gGaTHA/exec';
+        const form = document.forms['google-sheet'];
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, {method: 'POST', body: new FormData(form)})
+                .then(response => alert("You have been queued. Wait for email verification once added to the system. Thank you!"))
+                .cath(error => console.error('Error!', error.message))
+        })
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- SCRIPT FOR AUTODELETE TEXT IN FORM -->
+    <script>
+        function clearForm() {
+            var form = document.getElementById('regform');
+            
+            setTimeout(function() {
+                form.reset();
+            }, 15000)
+        }
+    </script>
+
+</body>
+</html>

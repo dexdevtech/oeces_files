@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/images/logo.png" type="image/x-icon">
+    <title>Forgot Password</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@300;400;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            background-color: #0F5239;
+            font-family: 'Anton', sans-serif;
+            margin: auto;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 72px;
+            font-weight: 400;
+            text-align: center;
+            letter-spacing: 81%;
+        }
+
+        p {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 24px;
+            text-align: justify;
+            font-weight: 300;
+        }
+    
+
+        .container-forgot {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .background-forgot {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: calc(100% - (160px + 160px));   
+            margin: 12px auto;
+            background-color: #26D192;
+            border: 6px #FCA62F solid;
+            border-radius: 12px;
+        }
+
+        .desc {
+            width: 85%;
+            font-family: 'Work Sans', sans-serif;
+            margin: 16px auto;
+        }
+
+
+        @media only screen and (max-width: 830px) {
+            .background-forgot {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 44px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+        }
+
+        @media only screen and (max-width: 370px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            p {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-forgot">
+        <div class="title">
+            <h1>Forgot password</h1>
+        </div>
+        <div class="background-forgot">
+            <div class="desc">
+                <p>Please be guided that <strong>only authorized staff members</strong> of CENRO Sto. Tomas have access to the website account. If you forgot the password, contact the head of CENRO Sto. Tomas. They will guide you through the necessary steps to obtain the required authorization. Remember that without the complete and correct credentials, the process will not proceed.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

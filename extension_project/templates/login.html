@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/images/logo.png" type="image/x-icon">
+        <title>Login</title>
+        <link rel="stylesheet" href="/static/login.css">
+    </head>
+    
+    <body>
+        <div>
+            <div class="navbar">
+                <a href="{{url_for('home')}}">
+                    <img src="/static/images/logo.png" alt="logo" class="logo">
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="{{url_for('home')}}">HOME</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header">
+                <h1>LOG IN</h1>
+            </div>
+            <!-- Create a Form -->
+            <form action="" method="POST">
+                <label for="">Email or Username</label>
+                <input type="text" name="name" id="">
+
+                <label for="">Password</label>
+                <input type="password" name="password" id="">
+
+                <a href="{{url_for('forgot_pass')}}" target="_blank">I forgot my password.</a>
+                <input type="submit" value="Log In" name="submit">
+            </form>
+            <div class="footer">
+                <p><a href="{{url_for('home')}}">Go Back To Homepage</a></p>      
+            </div>
+        </div>
+    </body>
+</html>

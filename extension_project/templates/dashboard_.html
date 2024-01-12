@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <!-- MATERIAL CDN -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+        rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <!-- STYLESHEET -->
+        <link rel="stylesheet" href="/static/dashboard_style.css">
+        <link rel="icon" href="/static/images/logo.png" type="image/x-icon">
+
+        <style>
+            .material-symbols-outlined {
+              font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 0,
+              'opsz' 48
+            }
+            </style>
+    </head>
+    <body>
+        <div class="container">
+            <aside>
+                <div class="top">
+                    <div class="logo">
+                        <img src="/static/images/logo.png">
+                        <h2>CENR<span class="danger">O</span></h2>
+                    </div>
+                    <div class="close" id="close-btn">
+                        <span class="material-icons-sharp">close</span>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <a href="{{url_for('traccar')}}" target="_blank">
+                        <span class="material-symbols-outlined">share_location</span>
+                        <h3>TRACCAR</h3>
+                    </a>
+                    <a href="{{url_for('textit')}}" target="_blank">
+                        <span class="material-icons-sharp">receipt_long</span>
+                        <h3>TEXT IT</h3>
+                    </a>
+                    <a href="{{url_for('tickets')}}" target="_blank">
+                        <span class="material-icons-sharp">insights</span>
+                        <h3>TICKETS</h3>
+                    </a>
+                    <a href="{{url_for('cluster_subscribers')}}" target="_blank">
+                        <span class="material-icons-sharp">border_color</span>
+                        <h3>CLUSTER SUBSCRIBERS</h3>
+                    </a>
+                    <a href="{{url_for('contacts')}}" target="_blank">
+                        <span class="material-icons-sharp">person_outline</span>
+                        <h3>CONTACTS</h3>
+                    </a>
+                    <a href="{{url_for('logout')}}" target="_blank">
+                        <span class="material-icons-sharp">logout</span>
+                        <h3>LOGOUT</h3>
+                    </a>
+                </div>
+            </aside>
+            <!---------------- END OF ASIDE --------------------->
+            <main>
+                <h1>Dashboard</h1>
+
+                <div class="date">
+                    <h2>Subscribers</h2>
+                </div>
+
+                <div class="insights">
+                    <div class="sales">
+                        <span class="material-icons-sharp">analytics</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Subsribers</h3>
+                                <h1>400</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx='38' cy='38' r='36'></circle>
+                                </svg>
+                                <div class="number">
+                                    <p>100%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted"></small>
+                    </div>
+                    <!--------------------- END OF SALES--------------->
+                    <div class="expenses">
+                        <span class="material-icons-sharp">analytics</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>New Subscribers</h3>
+                                <h1>17</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx='38' cy='38' r='36'></circle>
+                                </svg>
+                                <div class="number">
+                                    <p>4.25%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">Last Week</small>
+                    </div>
+                    <!--------------------- END OF EXPENSES--------------->
+                    <div class="income">
+                        <span class="material-icons-sharp">stacked_line_chart</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Unsubscribed</h3>
+                                <h1>1</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx='38' cy='38' r='36'></circle>
+                                </svg>
+                                <div class="number">
+                                    <p>0.25%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">Last Week</small>
+                    </div>
+                    <!--------------------- END OF INCOME--------------->
+                </div>
+                <!------------------ END OF INSIGHTS ---------------->
+
+                <div class="recent-orders">
+                    <h2>Bills</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Amount</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!------------
+                            <tr>
+                                <td>Foldable Mini Drone</td>
+                                <td>85631</td>
+                                <td>Due</td>
+                                <td class="warning">Pending</td>
+                                <td class="primary">Details</td>
+                            </tr>
+                            ------>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+            <!-------------------- END OF MAIN -------------------->
+
+            <div class = "right">
+                <div class="top">
+                    <button id="menu-btn">
+                        <span class="material-icons-sharp">menu</span>
+                    </button>
+                    <div class="themeToggler">
+                        <span class="material-icons-sharp active">light_mode</span>
+                        <span class="material-icons-sharp">dark_mode</span>
+                    </div>
+                    <div class="profile">
+                        <div class="info">
+                            <p>Hey, <b>{{user}}</b></p>
+                            <small class="text-muted">Admin</small>
+                        </div>
+                    </div>
+                </div>
+                <!-------------------------- END OF TOP ---------------------->
+
+                <div class="recent-updates  ">
+                    <h2>Bills Background</h2>
+                    <div class="updates">
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="/static/images/profile-2.png">
+                            </div>
+                            <div class="message">
+                                <p><b>Text It</b> <br>provides bulk texting capabilities and stores subscibers data.
+                                It also provides customizable flows so you can implement your business logic</p>
+                                <small class="text-muted">Recommended</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="updates">
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="/static/images/profile-3.png">
+                            </div>
+                            <div class="message">
+                                <p><b>Cellular Load</b> <br>channel for Text It. This will be used to send out notifications.</p>
+                                <small class="text-muted">Recommended</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="updates">
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="/static/images/profile-4.png">
+                            </div>
+                            <div class="message">
+                                <p><b>Web Hosting and Domain Name</b> <br>important for the service to be accessible to everyone over the internet.</p>
+                                <small class="text-muted">Recommended</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------- END OF RECENT UPDATES--------------------->
+            </div>
+        </div>
+
+
+        <script src="/static/dashboard_orders.js"></script>
+        <script src="/static/dashboard_index.js"></script>
+    </body>
+</html>
+

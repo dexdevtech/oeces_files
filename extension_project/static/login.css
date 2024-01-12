@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@900&display=swap');
+
+* {
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Here, we want to work with a clean slate that is why we 
+    set border and padding to 0 while box-sizing: border-box basically removes
+    all the default padding and border in the html elements */
+}
+
+:root {
+    --main-color: #26d192;
+    --hover-shadow: 0px 3px 5px 0 rgba(0,0,0,0.34);
+    --box-hover: 0px 4px 4px 0px rgba(3,3,3,0.561);
+    --nav-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    --light-black: #414343;
+    /* In here, we create CSS variables */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-black);
+    /* You can import the "Nunito" font by searching Google Fonts in Chrome,
+    then searching for the font name in the search bar. Select variations of Nunito and then
+    copy generated link at the bottom-right corner of the screen. */
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-family: 'Geologica', serif;
+}
+
+.navbar {
+    width: 70%;
+    margin: 0 auto;
+    padding: 2% 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    width: 50px;
+    cursor: pointer;
+}
+
+.navbar nav {
+    flex: 1;
+    text-align: right;
+    /* when using flex: 1; the parent div must be set to display: flex;
+    this means that the element will take up all available space within the container
+    when setting flex: 1; you automatically set flex-grow, flex-shrink, and flex-basis. */
+
+    /* .navbar is set to display: flex; and it has two child elements -- img and ul */
+}
+
+.navbar nav ul li {
+    display: inline-block;
+    padding-left: 80px;
+
+    /* inline-block allows you to set block characteristics to inline elements such as
+    padding and margin */
+}
+
+.navbar nav ul li a {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: 'Geologica', sans-serif;
+}
+
+.navbar nav ul li a:hover {
+    color: #fcc16d;
+}
+
+.container {
+    width: 32%;
+    margin: 1% auto;
+    /* Here we want to limit our working space and then center the div using the margin: auto attribute*/
+}
+
+.container .header h1 {
+    text-align: center;
+    color: var(--main-color);
+}
+
+/* FORM */
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+    /* Since forms behaves essentially as divs, we can apply display: flex to work with elements much easier. */
+}
+
+form label {
+    margin: 5px 0;
+    font-size: 20px;
+    color: white;
+    /* These are the names of the forms. */
+}
+
+form input[type="text"], input[type="password"] {
+    height: 55px;
+    margin: 5px 0;
+    border: 0.5px solid #b8b85d;
+    border-radius: 3px;
+    padding: 0 10px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    /* You can target multiple classes, ids, or inputs at the same time by using a comma. We do this
+    when these things are set to have the same attribute. */
+}
+
+form a {
+    margin: 10px 0;
+    text-decoration: none;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+form input[type="submit"] {
+    height: 50px;
+    background: var(--main-color);
+    font-size: 20px;
+    font-family: 'Geologica', serif;
+    border: none;
+    border-radius: 2px;
+    color: #ffffff;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-2px); /* Translates Y upwards when hover*/
+    /* Hover adds animation to our code. Hover is cool! */
+}
+
+.footer a {
+    color: var(--main-color);
+    text-decoration: none;
+    float: right;
+    font-size: 16px;
+    opacity: 0.9;
+    font-weight: bold;
+    /* We use float attribute here to not just center all our elements and create dynamics.  */
+}
+
+.footer a:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    /* Hover!!!! */
+}
+
+@media(max-width: 750px) {
+    .container {
+        width: 42%;
+    }
+}
+
+
+
+
+
+
