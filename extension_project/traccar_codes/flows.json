@@ -1,0 +1,819 @@
+{
+  "version": "13",
+  "site": "https://textit.com",
+  "flows": [
+    {
+      "name": "JoinTicket",
+      "uuid": "02adc19a-896b-4e8f-96df-da66413f4cf3",
+      "spec_version": "13.2.0",
+      "language": "eng",
+      "type": "messaging",
+      "nodes": [
+        {
+          "uuid": "2fbd0287-66b5-4fca-b4b5-2397d9be00a1",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Please reply with your Last_Name <space> #House_Number. Example, \"Mugar #4\".",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "75d5e5ee-e39b-49f1-9f05-0bcddcdb7b3e"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "86107765-509e-4024-84fe-a394e94ffc21",
+              "destination_uuid": "ce7400d0-638a-4bba-a9e1-3eed28a09820"
+            }
+          ]
+        },
+        {
+          "uuid": "ce7400d0-638a-4bba-a9e1-3eed28a09820",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "64b39767-6741-4338-9fdf-393858f44179",
+            "cases": [
+              {
+                "arguments": [],
+                "type": "has_number",
+                "uuid": "6bf25359-dcee-4f36-aa76-ac4bab3d2ec8",
+                "category_uuid": "a8de6aaf-c103-486c-8773-d873af491917"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "a8de6aaf-c103-486c-8773-d873af491917",
+                "name": "Has Number",
+                "exit_uuid": "3ca08fc2-3279-43cd-9927-e8c7a6ca91ae"
+              },
+              {
+                "uuid": "64b39767-6741-4338-9fdf-393858f44179",
+                "name": "Other",
+                "exit_uuid": "5f601793-2429-4278-89aa-71eb9fa11f8c"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "housenumber"
+          },
+          "exits": [
+            {
+              "uuid": "3ca08fc2-3279-43cd-9927-e8c7a6ca91ae",
+              "destination_uuid": "3d323374-6f09-451d-95d0-8ba1c68eeaba"
+            },
+            {
+              "uuid": "5f601793-2429-4278-89aa-71eb9fa11f8c",
+              "destination_uuid": "a28cd197-c3ec-4341-956c-a8c7b109ea54"
+            }
+          ]
+        },
+        {
+          "uuid": "3d323374-6f09-451d-95d0-8ba1c68eeaba",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Your request is now being processed. Please wait, thank you!",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "20bb82cd-ef41-4f71-b492-49e98416c410"
+            },
+            {
+              "type": "add_contact_groups",
+              "groups": [
+                {
+                  "uuid": "45d4823e-8b3f-4a60-b5a1-c06bf6fb7bcc",
+                  "name": "JOIN TICKET",
+                  "query": null,
+                  "status": "ready",
+                  "system": false,
+                  "count": 0
+                }
+              ],
+              "uuid": "d4583b12-d737-49b6-9028-097d02fb3f62"
+            },
+            {
+              "uuid": "005e7b5c-3747-401d-a4f1-4b965bbe8a77",
+              "type": "set_contact_name",
+              "name": "@results.housenumber"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "41181186-e20b-4b3e-b5de-5f10f58a3dc0",
+              "destination_uuid": "c5ec3388-6338-49e1-b176-2efd14fdb94f"
+            }
+          ]
+        },
+        {
+          "uuid": "a28cd197-c3ec-4341-956c-a8c7b109ea54",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "It seems like your text doesn't have a house number. Please try again.\n",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "fe1db06c-45e1-4930-bcfd-941923c088bf"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "1f4d8810-7ae6-4de8-9fc7-a979297b30b4",
+              "destination_uuid": "ce7400d0-638a-4bba-a9e1-3eed28a09820"
+            }
+          ]
+        },
+        {
+          "uuid": "c5ec3388-6338-49e1-b176-2efd14fdb94f",
+          "actions": [
+            {
+              "uuid": "9967aa55-ff64-4f7a-85bb-8d2d45c71bb4",
+              "type": "open_ticket",
+              "ticketer": {
+                "uuid": "082a7852-49ae-4a08-b473-d19ea2ea2a61",
+                "name": "TextIt Tickets"
+              },
+              "body": "@results.housenumber",
+              "topic": {
+                "uuid": "048f600f-f85f-4dee-b2b9-9ee2a69b3f73",
+                "name": "General",
+                "counts": {
+                  "open": 0,
+                  "closed": 2
+                },
+                "system": true,
+                "created_on": "2023-06-06T14:02:02.680013Z"
+              },
+              "assignee": {
+                "email": "ecenine4yr@gmail.com",
+                "first_name": "ECE",
+                "last_name": "NINE",
+                "role": "administrator",
+                "created_on": "2023-06-06T14:02:02.302306Z"
+              },
+              "result_name": "houseno"
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@results.houseno",
+            "cases": [
+              {
+                "uuid": "3851238e-bdb2-4c0f-8e81-5321b790e548",
+                "type": "has_category",
+                "arguments": [
+                  "Success"
+                ],
+                "category_uuid": "4464e103-d6f4-4a29-95e5-44a12f6fd175"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "4464e103-d6f4-4a29-95e5-44a12f6fd175",
+                "name": "Success",
+                "exit_uuid": "7afa8778-af5a-4548-b645-ac57ba44f29d"
+              },
+              {
+                "uuid": "63e8984f-1530-4f77-b962-d672fd22527c",
+                "name": "Failure",
+                "exit_uuid": "d2c6ba4d-72cc-4b8b-a3a7-737344a8df86"
+              }
+            ],
+            "default_category_uuid": "63e8984f-1530-4f77-b962-d672fd22527c"
+          },
+          "exits": [
+            {
+              "uuid": "7afa8778-af5a-4548-b645-ac57ba44f29d",
+              "destination_uuid": null
+            },
+            {
+              "uuid": "d2c6ba4d-72cc-4b8b-a3a7-737344a8df86",
+              "destination_uuid": null
+            }
+          ]
+        }
+      ],
+      "_ui": {
+        "nodes": {
+          "2fbd0287-66b5-4fca-b4b5-2397d9be00a1": {
+            "position": {
+              "left": 600,
+              "top": 80
+            },
+            "type": "execute_actions"
+          },
+          "ce7400d0-638a-4bba-a9e1-3eed28a09820": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 600,
+              "top": 240
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "3d323374-6f09-451d-95d0-8ba1c68eeaba": {
+            "position": {
+              "left": 420,
+              "top": 440
+            },
+            "type": "execute_actions"
+          },
+          "a28cd197-c3ec-4341-956c-a8c7b109ea54": {
+            "position": {
+              "left": 820,
+              "top": 500
+            },
+            "type": "execute_actions"
+          },
+          "c5ec3388-6338-49e1-b176-2efd14fdb94f": {
+            "type": "split_by_ticket",
+            "position": {
+              "left": 420,
+              "top": 720
+            },
+            "config": {}
+          }
+        }
+      },
+      "revision": 132,
+      "expire_after_minutes": 5,
+      "localization": {}
+    },
+    {
+      "name": "FAQ2",
+      "uuid": "05753a16-65e7-43c9-a812-d40d32267927",
+      "spec_version": "13.2.0",
+      "language": "eng",
+      "type": "messaging",
+      "nodes": [
+        {
+          "uuid": "4c72e721-6bdb-4fc5-808d-d4377b9e7666",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Here are the FAQs:\n1. What is the schedule of garbage collection?\n-The collection happens every Monday, Wednesday, and Friday at 6am.\n2. How to Join/Unjoin?\n-Please reply with \"joincenro\" to join, and \"unjoincenro\" to unjoin.\n3. How to know your cluster?\n-Cluster information is private. Once you submit a ticket, CENRO officials will automatically put you in the right cluster.\n4. Can I change my registered SIM?\n-Yes, it can be resolved by unjoining first, then register with your new phone number.\n5. I don't receive messages, why?\n-It might be because you are not subscribe yet or reception on your phone is very weak. To join, please reply with \"joincenro\".",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "5b855278-b4c2-48d4-8cac-77955f666631"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "5e11a5ce-0d88-4f72-9e30-26791541fd4b",
+              "destination_uuid": null
+            }
+          ]
+        }
+      ],
+      "_ui": {
+        "nodes": {
+          "4c72e721-6bdb-4fc5-808d-d4377b9e7666": {
+            "position": {
+              "left": 0,
+              "top": 0
+            },
+            "type": "execute_actions"
+          }
+        }
+      },
+      "revision": 5,
+      "expire_after_minutes": 10080,
+      "localization": {}
+    },
+    {
+      "_ui": {
+        "nodes": {
+          "10d4ad17-f2cc-437d-8055-23722d181682": {
+            "position": {
+              "left": 580,
+              "top": 140
+            },
+            "type": "execute_actions"
+          },
+          "7b4f0a02-2afa-480d-95e3-1e573d13a40a": {
+            "position": {
+              "left": 580,
+              "top": 340
+            },
+            "type": "execute_actions"
+          }
+        }
+      },
+      "expire_after_minutes": 43200,
+      "language": "eng",
+      "localization": {},
+      "name": "Bult Texting",
+      "nodes": [
+        {
+          "actions": [
+            {
+              "legacy_vars": [],
+              "contacts": [],
+              "groups": [
+                {
+                  "uuid": "98c62dc5-6cfe-42fb-86c8-6c23a4bda481",
+                  "name": "New Contact"
+                }
+              ],
+              "compose": "{\"text\":\"This is for our thesis. THIS MESSAGE IS FOR TESTING PURPOSES. Tag as spam to avoid inconveniences. Thank you for your participation. :)\",\"attachments\":[]}",
+              "text": "This is for our thesis. THIS MESSAGE IS FOR TESTING PURPOSES. Tag as spam to avoid inconveniences. Thank you for your participation. :)",
+              "attachments": [],
+              "type": "send_broadcast",
+              "uuid": "c3ddd2c7-a210-4d9f-99a3-4047a0eaa366"
+            }
+          ],
+          "exits": [
+            {
+              "destination_uuid": "7b4f0a02-2afa-480d-95e3-1e573d13a40a",
+              "uuid": "38368040-8e05-492e-b131-33e6db0f9f05"
+            }
+          ],
+          "uuid": "10d4ad17-f2cc-437d-8055-23722d181682"
+        },
+        {
+          "uuid": "7b4f0a02-2afa-480d-95e3-1e573d13a40a",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "bulk",
+              "value": "@(title(input))",
+              "category": "",
+              "uuid": "033a8b19-b8c2-4087-8cff-7e1693063b38"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "40473cef-ae4e-4350-b655-5ee7071ceb9b",
+              "destination_uuid": null
+            }
+          ]
+        }
+      ],
+      "spec_version": "13.2.0",
+      "type": "messaging",
+      "uuid": "a1d4d1ed-9803-450d-96d7-a66baef806c3",
+      "revision": 30
+    },
+    {
+      "name": "UnjoinTicket",
+      "uuid": "c4ef4b77-b4c2-4029-9023-d188837528a9",
+      "spec_version": "13.2.0",
+      "language": "eng",
+      "type": "messaging",
+      "nodes": [
+        {
+          "uuid": "dbf00c43-f625-426f-b8e7-3822be3af131",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Please reply with your Last_Name <space> #House_Number. Example, \"Testing #4\".",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "aafff6c1-7fb9-4aa5-8854-660942b12835"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "351ed695-5fe2-457d-9ae9-52c9806d411c",
+              "destination_uuid": "9f9fd3a7-b3a1-4235-9ee1-25cbf1273c96"
+            }
+          ]
+        },
+        {
+          "uuid": "9f9fd3a7-b3a1-4235-9ee1-25cbf1273c96",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "7f5fe5c6-a7b6-4178-8515-4e3e34c69db5",
+            "cases": [
+              {
+                "arguments": [],
+                "type": "has_number",
+                "uuid": "441de8bb-9823-4622-b36d-73426b632579",
+                "category_uuid": "0da5029a-9726-40be-8dd5-50c9d0971ffc"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "0da5029a-9726-40be-8dd5-50c9d0971ffc",
+                "name": "Has Number",
+                "exit_uuid": "1855dd41-05d3-4366-a62a-aabcb5552636"
+              },
+              {
+                "uuid": "7f5fe5c6-a7b6-4178-8515-4e3e34c69db5",
+                "name": "Other",
+                "exit_uuid": "da7c947e-c7cd-468c-9d56-13544527dd6d"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg"
+            },
+            "result_name": "housenumber1"
+          },
+          "exits": [
+            {
+              "uuid": "1855dd41-05d3-4366-a62a-aabcb5552636",
+              "destination_uuid": "b3b48fc4-abbc-4ac0-881b-6ca332b30ba9"
+            },
+            {
+              "uuid": "da7c947e-c7cd-468c-9d56-13544527dd6d",
+              "destination_uuid": "a44b5ca3-a1cc-495e-9564-1337052d96a8"
+            }
+          ]
+        },
+        {
+          "uuid": "b3b48fc4-abbc-4ac0-881b-6ca332b30ba9",
+          "actions": [
+            {
+              "type": "add_contact_groups",
+              "groups": [
+                {
+                  "uuid": "084f09b9-d764-4b6b-88a8-ffcd6c23d0f2",
+                  "name": "UNJOIN TICKET",
+                  "query": null,
+                  "status": "ready",
+                  "system": false,
+                  "count": 0
+                }
+              ],
+              "uuid": "5bcd755f-c499-431e-be2a-6c2749047302"
+            },
+            {
+              "attachments": [],
+              "text": "Your request is now being processed. Please wait, thank you!",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "f2e23dfa-1233-44c3-a9df-5e601ff1115c"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "d19c374b-9712-4a5f-9d6d-e0d0a75c448f",
+              "destination_uuid": "a0b189ea-0c80-4337-909e-a920562afe44"
+            }
+          ]
+        },
+        {
+          "uuid": "a44b5ca3-a1cc-495e-9564-1337052d96a8",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "It seems like your text doesn't have a house number. Please try again.\n",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "6f94d5bc-3d73-42cc-be0a-fcd7416b78c0"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "686b16e4-0ee0-4cdf-89bd-6c3bd0a4665f",
+              "destination_uuid": "9f9fd3a7-b3a1-4235-9ee1-25cbf1273c96"
+            }
+          ]
+        },
+        {
+          "uuid": "a0b189ea-0c80-4337-909e-a920562afe44",
+          "actions": [
+            {
+              "uuid": "5f85a621-42a3-4af8-9b98-240dc18eb222",
+              "type": "open_ticket",
+              "ticketer": {
+                "uuid": "082a7852-49ae-4a08-b473-d19ea2ea2a61",
+                "name": "TextIt Tickets"
+              },
+              "body": "@results",
+              "topic": {
+                "uuid": "048f600f-f85f-4dee-b2b9-9ee2a69b3f73",
+                "name": "General",
+                "counts": {
+                  "open": 0,
+                  "closed": 46
+                },
+                "system": true,
+                "created_on": "2023-06-06T14:02:02.680013Z"
+              },
+              "assignee": {
+                "email": "ecenine4yr@gmail.com",
+                "first_name": "ECE",
+                "last_name": "NINE",
+                "role": "administrator",
+                "created_on": "2023-06-06T14:02:02.302306Z"
+              },
+              "result_name": "Result"
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@results.result",
+            "cases": [
+              {
+                "uuid": "55ac46ca-70c8-47e3-b14e-60df78ce0435",
+                "type": "has_category",
+                "arguments": [
+                  "Success"
+                ],
+                "category_uuid": "4049e30d-cac4-4304-a774-cd5d811e2bba"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "4049e30d-cac4-4304-a774-cd5d811e2bba",
+                "name": "Success",
+                "exit_uuid": "5200515e-3665-47e1-9ece-f94df7696daf"
+              },
+              {
+                "uuid": "ff3445b6-ee1c-40ad-9904-49c4fa9801bb",
+                "name": "Failure",
+                "exit_uuid": "de439337-e2b1-4cdb-88c4-3ffa65e3c190"
+              }
+            ],
+            "default_category_uuid": "ff3445b6-ee1c-40ad-9904-49c4fa9801bb"
+          },
+          "exits": [
+            {
+              "uuid": "5200515e-3665-47e1-9ece-f94df7696daf",
+              "destination_uuid": null
+            },
+            {
+              "uuid": "de439337-e2b1-4cdb-88c4-3ffa65e3c190",
+              "destination_uuid": null
+            }
+          ]
+        }
+      ],
+      "_ui": {
+        "nodes": {
+          "dbf00c43-f625-426f-b8e7-3822be3af131": {
+            "position": {
+              "left": 700,
+              "top": 80
+            },
+            "type": "execute_actions"
+          },
+          "9f9fd3a7-b3a1-4235-9ee1-25cbf1273c96": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 680,
+              "top": 320
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "b3b48fc4-abbc-4ac0-881b-6ca332b30ba9": {
+            "position": {
+              "left": 500,
+              "top": 540
+            },
+            "type": "execute_actions"
+          },
+          "a44b5ca3-a1cc-495e-9564-1337052d96a8": {
+            "position": {
+              "left": 740,
+              "top": 540
+            },
+            "type": "execute_actions"
+          },
+          "a0b189ea-0c80-4337-909e-a920562afe44": {
+            "type": "split_by_ticket",
+            "position": {
+              "left": 500,
+              "top": 760
+            },
+            "config": {}
+          }
+        }
+      },
+      "revision": 60,
+      "expire_after_minutes": 30,
+      "localization": {}
+    },
+    {
+      "name": "Join Ticket",
+      "uuid": "8284d7a3-f56a-4d01-924b-d4f71199e8f1",
+      "spec_version": "13.2.0",
+      "language": "eng",
+      "type": "messaging_background",
+      "nodes": [
+        {
+          "uuid": "c27a1afd-4da3-4690-a308-cbac682c605c",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "You can now receive notifications for garbage collection. Thank you!",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "8a762bb2-8302-4ffd-8e62-9f6867150c31"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "e4683208-d6d7-4a0d-9317-b8de84664ac9",
+              "destination_uuid": null
+            }
+          ]
+        }
+      ],
+      "_ui": {
+        "nodes": {
+          "c27a1afd-4da3-4690-a308-cbac682c605c": {
+            "position": {
+              "left": 560,
+              "top": 140
+            },
+            "type": "execute_actions"
+          }
+        }
+      },
+      "revision": 14,
+      "expire_after_minutes": 0,
+      "localization": {}
+    },
+    {
+      "name": "Unjoin Ticket",
+      "uuid": "7fee4afe-8b1f-4cd1-b356-361d5c831272",
+      "spec_version": "13.2.0",
+      "language": "eng",
+      "type": "messaging_background",
+      "nodes": [
+        {
+          "uuid": "3f7e4a5e-1c9e-41e1-b981-a679ee207fe4",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "You are now unsubscribed to the system. Thank you!",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "6f38af1b-402c-4809-8dd1-2d9952ecb956"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "136b56f5-3f39-4e4e-977a-8ff331fafb00",
+              "destination_uuid": null
+            }
+          ]
+        }
+      ],
+      "_ui": {
+        "nodes": {
+          "3f7e4a5e-1c9e-41e1-b981-a679ee207fe4": {
+            "position": {
+              "left": 580,
+              "top": 120
+            },
+            "type": "execute_actions"
+          }
+        }
+      },
+      "revision": 6,
+      "expire_after_minutes": 0,
+      "localization": {}
+    }
+  ],
+  "campaigns": [],
+  "triggers": [
+    {
+      "trigger_type": "K",
+      "flow": {
+        "uuid": "a1d4d1ed-9803-450d-96d7-a66baef806c3",
+        "name": "Bult Texting"
+      },
+      "groups": [],
+      "exclude_groups": [],
+      "channel": null,
+      "keywords": [
+        "textingbulk"
+      ],
+      "match_type": "F"
+    },
+    {
+      "trigger_type": "K",
+      "flow": {
+        "uuid": "02adc19a-896b-4e8f-96df-da66413f4cf3",
+        "name": "JoinTicket"
+      },
+      "groups": [],
+      "exclude_groups": [],
+      "channel": null,
+      "keywords": [
+        "jointicket"
+      ],
+      "match_type": "F"
+    },
+    {
+      "trigger_type": "T",
+      "flow": {
+        "uuid": "7fee4afe-8b1f-4cd1-b356-361d5c831272",
+        "name": "Unjoin Ticket"
+      },
+      "groups": [
+        {
+          "uuid": "084f09b9-d764-4b6b-88a8-ffcd6c23d0f2",
+          "name": "UNJOIN TICKET"
+        }
+      ],
+      "exclude_groups": []
+    },
+    {
+      "trigger_type": "K",
+      "flow": {
+        "uuid": "c4ef4b77-b4c2-4029-9023-d188837528a9",
+        "name": "UnjoinTicket"
+      },
+      "groups": [],
+      "exclude_groups": [],
+      "channel": null,
+      "keywords": [
+        "unjointicket"
+      ],
+      "match_type": "F"
+    },
+    {
+      "trigger_type": "T",
+      "flow": {
+        "uuid": "8284d7a3-f56a-4d01-924b-d4f71199e8f1",
+        "name": "Join Ticket"
+      },
+      "groups": [
+        {
+          "uuid": "5593a97d-c184-4a61-800c-30ecc094e949",
+          "name": "Cluster 1(H#1 - #100)"
+        },
+        {
+          "uuid": "4515976c-4cb9-44c8-8890-1891b9c6b33a",
+          "name": "Cluster 2(H#101 -  #200)"
+        },
+        {
+          "uuid": "54d6236d-8827-43a4-90fc-9b332d7a7795",
+          "name": "Cluster 3(H#201 - #300)"
+        }
+      ],
+      "exclude_groups": [
+        {
+          "uuid": "45d4823e-8b3f-4a60-b5a1-c06bf6fb7bcc",
+          "name": "JOIN TICKET"
+        },
+        {
+          "uuid": "c97ae41a-9ef0-4898-9eaf-aff7fa469e00",
+          "name": "Open Tickets"
+        },
+        {
+          "uuid": "084f09b9-d764-4b6b-88a8-ffcd6c23d0f2",
+          "name": "UNJOIN TICKET"
+        }
+      ]
+    },
+    {
+      "trigger_type": "K",
+      "flow": {
+        "uuid": "05753a16-65e7-43c9-a812-d40d32267927",
+        "name": "FAQ2"
+      },
+      "groups": [],
+      "exclude_groups": [],
+      "channel": null,
+      "keywords": [
+        "fayq"
+      ],
+      "match_type": "F"
+    }
+  ],
+  "fields": [],
+  "groups": [
+    {
+      "uuid": "5593a97d-c184-4a61-800c-30ecc094e949",
+      "name": "Cluster 1(H#1 - #100)",
+      "query": null
+    },
+    {
+      "uuid": "4515976c-4cb9-44c8-8890-1891b9c6b33a",
+      "name": "Cluster 2(H#101 -  #200)",
+      "query": null
+    },
+    {
+      "uuid": "54d6236d-8827-43a4-90fc-9b332d7a7795",
+      "name": "Cluster 3(H#201 - #300)",
+      "query": null
+    },
+    {
+      "uuid": "45d4823e-8b3f-4a60-b5a1-c06bf6fb7bcc",
+      "name": "JOIN TICKET",
+      "query": null
+    },
+    {
+      "uuid": "98c62dc5-6cfe-42fb-86c8-6c23a4bda481",
+      "name": "New Contact",
+      "query": null
+    },
+    {
+      "uuid": "084f09b9-d764-4b6b-88a8-ffcd6c23d0f2",
+      "name": "UNJOIN TICKET",
+      "query": null
+    }
+  ]
+}
